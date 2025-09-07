@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjlg65m2fo5l5"]
+
+[ext_resource type="Script" uid="uid://cb7gir538s1ht" path="res://particula.gd" id="1_ftbhi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ftbhi"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_ftbhi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ftbhi")
