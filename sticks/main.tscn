@@ -1,26 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3idd6aybtiva"]
 
 [ext_resource type="PackedScene" uid="uid://c4paavt77vrs7" path="res://drag.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bs8wc73866ivd" path="res://stick.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://duo7a6q58gv0i" path="res://system.gd" id="2_0xm2m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0xm2m"]
 distance = -647.0
 
 [node name="Main" type="Node2D"]
 
-[node name="Node2D" parent="." instance=ExtResource("1_ig7tw")]
-
-[node name="stick1" parent="." instance=ExtResource("2_0xm2m")]
-
-[node name="stick2" parent="." instance=ExtResource("2_0xm2m")]
-
-[node name="stick3" parent="." instance=ExtResource("2_0xm2m")]
-
-[node name="stick4" parent="." instance=ExtResource("2_0xm2m")]
-
-[node name="stick5" parent="." instance=ExtResource("2_0xm2m")]
+[node name="Handle" parent="." instance=ExtResource("1_ig7tw")]
+point_position = Vector2(400, 100)
 
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("WorldBoundaryShape2D_0xm2m")
+
+[node name="system" type="Node2D" parent="." node_paths=PackedStringArray("handle")]
+script = ExtResource("2_0xm2m")
+num_links = 10
+tot_length = 400.0
+link_width = 10.0
+start_position = Vector2(500, 100)
+handle = NodePath("../Handle")

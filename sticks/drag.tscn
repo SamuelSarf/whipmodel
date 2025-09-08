@@ -2,15 +2,12 @@
 
 [ext_resource type="Script" uid="uid://3m6t003ghgcv" path="res://drag.gd" id="1_e7yra"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7yra"]
-size = Vector2(50, 5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_e7yra"]
 
-[node name="Node2D" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Node2D" type="StaticBody2D"]
 script = ExtResource("1_e7yra")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(14.5, 0)
-shape = SubResource("RectangleShape2D_e7yra")
+shape = SubResource("CircleShape2D_e7yra")

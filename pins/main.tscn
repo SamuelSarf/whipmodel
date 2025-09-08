@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1abiuxvx726d"]
+
+[ext_resource type="Script" uid="uid://getydelyv4q7" path="res://main.gd" id="1_0xm2m"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(451, 110)
+script = ExtResource("1_0xm2m")
+pasos = 2
+longitud = 100.0

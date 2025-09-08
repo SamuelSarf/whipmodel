@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yq3dtd04ooaa"]
+
+[ext_resource type="Script" uid="uid://cbxegyvl7ng2c" path="res://static_body_2d.gd" id="1_1bxyt"]
+
+[node name="RigidBody2D" type="StaticBody2D"]
+script = ExtResource("1_1bxyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

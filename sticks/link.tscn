@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7qwvg7p7mdm"]
+
+[ext_resource type="Script" uid="uid://bdlwgjlsuil32" path="res://link.gd" id="1_hqdcc"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_hqdcc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
