@@ -8,7 +8,6 @@ extends StaticBody2D
 var grab_radius: float = 20.0
 var is_dragging: bool = false
 func _ready():
-	# Set initial position
 	position = point_position
 	create_collision_shape()
 	create_visual()

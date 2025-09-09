@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1abiuxvx726d"]
 
-[ext_resource type="Script" uid="uid://getydelyv4q7" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://getydelyv4q7" path="res://alananitananananitananananitaea.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cwhyk102foqor" path="res://bspline.gd" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://fh1jlk4lklfe" path="res://wave_manager.gd" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://durd50qupeo0j" path="res://shockwave.tscn" id="4_1bvp3"]
@@ -10,7 +10,7 @@
 [node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("shock")]
 position = Vector2(129, 96)
 script = ExtResource("1_0xm2m")
-pasos = 50
+pasos = 20
 longitud = 1000.0
 lengitud = 5.0
 shock = NodePath("../WaveManager")

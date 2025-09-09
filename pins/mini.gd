@@ -8,9 +8,11 @@ extends RigidBody2D
 var speed_label: Label
 @export var shockwave_manager: Node2D
 var booming: bool = false
+@export var drag_coefficient: float = 0.47 
+@export var cross_sectional_area: float = 1.0
+@export var air_density: float = 1.225
 
 func _ready():
-	# Set initial position
 	position = point_position
 	create_collision_shape()
 	create_visual()
@@ -31,20 +33,25 @@ func create_visual():
 	add_child(color_rect)
 	
 func _physics_process(delta: float) -> void:
+	var speed = linear_velocity.length()/100
 	if punta:
-		var speed = linear_velocity.length()/100
 		speed_label.text = "Velocidad punta: " + str(snapped(pow(speed,1.4), 0.1))
 		if pow(speed,1.4) >= 343 and booming == false:
 			booming = true
 			create_sonic_boom()
 		elif pow(speed,1.4) <= 300:
 			booming = false
+	
+	if speed > 0:
+		var drag_magnitude = 0.5 * drag_coefficient * air_density * cross_sectional_area * speed * speed
+		var drag_force = -linear_velocity.normalized() * drag_magnitude
+		apply_central_force(drag_force)
 
 func create_sonic_boom():
 	if shockwave_manager:
 		shockwave_manager.create_shockwave(
 			global_position, 
-			1500.0,  # max_radius
-			800.0,   # expansion_speed
-			1500.0   # max_force
+			1500.0,  # radiomax
+			800.0,   # velocidad
+			1500.0   # fuerza
 		)

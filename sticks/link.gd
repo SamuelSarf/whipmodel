@@ -21,10 +21,9 @@ func create_visual():
 	var color_rect = ColorRect.new()
 	color_rect.size = Vector2(width, length)
 	color_rect.color = color
-	color_rect.position = Vector2(-length/2, -width/2)  # Center the visual
+	color_rect.position = Vector2(-length/2, -width/2)
 	add_child(color_rect)
 
-# Helper function to get connection points
 func get_top_connection_point() -> Vector2:
 	return Vector2(0, -length/2)
 

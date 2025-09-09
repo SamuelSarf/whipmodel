@@ -1,8 +1,7 @@
 extends RigidBody2D
 
 func _draw():
-	# Draw the point (a small circle)
-	draw_circle(Vector2.ZERO, 10, Color(1, 0, 0))  # Red circle at point's position
+	draw_circle(Vector2.ZERO, 10, Color(1, 0, 0))
 
 
 @export var target_node: Node2D
@@ -11,7 +10,6 @@ var nodos = 5
 var longitud = 50
 var sep = longitud/nodos
 var hooke = 37.0
-  # Drag and drop the target node in the inspector
 var ancla = Vector2(0,1)*sep
 func _physics_process(delta):
 	#var repulsion = Vector2(0,0)
@@ -43,12 +41,9 @@ func _physics_process(delta):
 		apply_force(tot)
 		
 	#if target_node2:
-		## Calculate direction vector from current position to target
 		#var atraccion = target_node2.global_position - global_position
-		## Normalize it to get a unit vector (length = 1)
 		#atraccion = atraccion.normalized()
 		#
-		## Normalize it to get a unit vector (length = 1)
 		#repulsion = repulsion.normalized()
 		#
 		#var distancia = global_position.distance_to(target_node.global_position)
@@ -59,7 +54,6 @@ func _physics_process(delta):
 	#apply_force(repulsion)
 
 func _ready():
-	# Connect to the global signal
 	SignalBus.slider_value_changed.connect(_on_slider_value_changed)
 	
 func _on_slider_value_changed(value: float):
