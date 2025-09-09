@@ -11,6 +11,7 @@ var booming: bool = false
 @export var drag_coefficient: float = 0.47 
 @export var cross_sectional_area: float = 1.0
 @export var air_density: float = 1.225
+@export var relativista: bool = false
 
 func _ready():
 	position = point_position
@@ -35,12 +36,15 @@ func create_visual():
 func _physics_process(delta: float) -> void:
 	var speed = linear_velocity.length()/100
 	if punta:
-		speed_label.text = "Velocidad punta: " + str(snapped(pow(speed,1.4), 0.1))
 		if pow(speed,1.4) >= 343 and booming == false:
 			booming = true
 			create_sonic_boom()
 		elif pow(speed,1.4) <= 300:
 			booming = false
+		if relativista == false:
+			speed_label.text = "Velocidad punta: " + str(snapped(pow(speed,1.4), 0.1)) + " m/s"
+		else:
+			speed_label.text = "Velocidad punta: " + str(snapped(speed/299792458000.0, 0.001)) + "c"
 	
 	if speed > 0:
 		var drag_magnitude = 0.5 * drag_coefficient * air_density * cross_sectional_area * speed * speed

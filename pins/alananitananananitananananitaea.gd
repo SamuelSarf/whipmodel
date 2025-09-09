@@ -6,6 +6,7 @@ extends Node2D
 @export var handle2: int = 0
 @export var shock: Node2D
 @export var mapa_de_masa: bool = false
+@export var relativista: bool = false
 var ultimo: Node2D
 var control_points: Array[Node2D]
 var masas: Vector2
@@ -14,7 +15,8 @@ func _ready() -> void:
 	var paso
 	var join
 	var anterior
-	var masas = load_csv_to_array("res://masas.map")
+	var masas = load_csv_to_array("res://masa.txt")
+	#print(masas)
 	for i in pasos:
 		if i == 0:
 			paso = preload("res://cabeza.tscn").instantiate()
@@ -30,8 +32,6 @@ func _ready() -> void:
 				paso.length = longitud / pasos
 				paso.color = Color(0,1,0)
 				paso.point_position = global_position + (Vector2(0,1)*(longitud/pasos)*i)
-				if mapa_de_masa == true:
-					paso.mass = masas[i]
 				join = preload("res://joint.tscn").instantiate()
 				join.point_position = global_position + (Vector2(0,1)*(longitud/pasos)*(i))
 				join.cosoa = anterior
@@ -47,6 +47,10 @@ func _ready() -> void:
 				paso.shockwave_manager = shock
 				if i == pasos-1:
 					paso.punta = true
+				if mapa_de_masa == true:
+					paso.mass = masas[i]
+				if relativista == true:
+					paso.relativista = true
 				join = preload("res://joint.tscn").instantiate()
 				join.point_position = global_position + (Vector2(0,1)*(longitud/pasos)*(i))
 				join.cosoa = anterior
@@ -66,6 +70,6 @@ func load_csv_to_array(file_path: String) -> Array:
 		
 		var items = content.split(",")
 		for item in items:
-			result_array.append(item.strip_edges())
+			result_array.append(float(item.strip_edges()))
 	
 	return result_array

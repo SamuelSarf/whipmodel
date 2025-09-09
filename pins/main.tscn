@@ -14,9 +14,11 @@ pasos = 20
 longitud = 1000.0
 lengitud = 5.0
 shock = NodePath("../WaveManager")
+mapa_de_masa = true
+relativista = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = 966.0
+offset_left = 934.0
 offset_top = 1.0
 offset_right = 1150.0
 offset_bottom = 24.0
